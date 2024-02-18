@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f5f5;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    margin: 0 auto;
+    width: 90%;
+    background-color: #fff;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    height: 100px;
+    margin: auto 0;
+    /* background-color: aquamarine; */
+}
+
+.nav .burger {
+    grid-column: 1 / 3;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    font-size: 26px;
+}
+
+.nav .burger i {
+    padding-right: 20px;
+}
+
+.nav .search {
+    grid-column: 3/6;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.nav .search .search-input {
+    padding: 8px 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.nav .search span {
+    background-color: #333;
+}
+
+.nav .search i {
+    padding-left: 5px;
+    color: #ddd;
+    background-color: #333;
+}
+
+.nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 6/8;
+    font-family: sans-serif;
+    font-size: 56px;
+}
+
+.nav .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 10/12;
+    font-size: 26px;
+}
+
+.nav .login i {
+    padding-right: 15px;
+}
+
+.nav .cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 12/13;
+    font-size: 26px;
+}
+
+.slider {
+    height: 560px;
+    background-color: pink;
+}
+
+.bestsellers {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    height: 480px;
+    background-color: rgb(154, 231, 225);
+}
+
+.bestsellers h3 {
+    font-size: 42px;
+    line-height: 120px;
+    text-align: center;
+}
+
+.bestsellers-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;
+    /* height: 100%; */
+}
+
+.bestseller {
+    background-color: #7fb698;
+    border: 3px dashed #ccc;
+}
+
+.show-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: aquamarine;
+}
+
+.show-all button {
+    padding: 15px 30px;
+    font-size: 42px;
+    background-color: aquamarine;
+    border: 3px solid #333;
+}
+
+.recommended {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 3fr 3fr;
+    height: 800px;
+    background-color: #cac;
+    gap: 2%;
+}
+
+.recommended h3 {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    background-color: #cacf;
+    line-height: 120px;
+    text-align: center;
+    font-size: 42px;
+    border: 3px dashed #c2c;
+}
+
+.recommend {
+    border: 3px dashed #c2c;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 5fr 1fr;
+    gap: 2%;
+    height: 400px;
+    background-color: #afc;
+}
+
+.ft-item {
+    border: 3px dotted green;
+    text-align: center;
+}
+
+.copyright {
+    grid-column: 1/5;
+    grid-row: 2/3;
+}
