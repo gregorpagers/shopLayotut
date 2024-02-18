@@ -73,7 +73,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-column: 10/12;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .nav .login i {
