@@ -1,0 +1,449 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f5f5;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1920px;
+    background-color: #fff;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    height: 100px;
+    margin: auto 0;
+    /* background-color: aquamarine; */
+}
+
+.nav .burger {
+    grid-column: 1 / 3;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    font-size: 20px;
+}
+
+.nav .burger i {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.nav .search {
+    grid-column: 3/6;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.nav .search .search-input {
+    height: 40px;
+    width: 280px;
+    padding: 8px 20px;
+    border-radius: 5px 0 0 5px;
+    font-size: 20px;
+}
+
+.nav .search span {
+    background-color: #333;
+}
+
+.nav .search i {
+    padding: 9px;
+    color: #ddd;
+    background-color: #333;
+    font-size: 22px;
+    border-radius: 0 5px 5px 0;
+    /* height: 40px; */
+    cursor: pointer;
+}
+
+.nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 6/8;
+    font-family: sans-serif;
+    font-size: 56px;
+
+}
+
+.nav .logo a {
+    color: #000;
+    text-decoration: none;
+}
+
+.nav .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 10/12;
+    font-size: 20px;
+}
+
+.nav .login i {
+    padding-right: 15px;
+}
+
+.nav .cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 12/13;
+    font-size: 26px;
+}
+
+/* *************************************************** */
+/* slider */
+/* *************************************************** */
+
+.slider {
+    position: relative;
+    height: 560px;
+    background-image: url(./fruits-img/strawberry.jpg);
+    background-size: cover;
+}
+
+.slider .description-wrapper {
+    position: absolute;
+    width: 40%;
+    top: 40%;
+    left: 8%;
+    text-align: center;
+}
+
+.slider h2 {
+    margin-bottom: 5%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.85);
+    font-size: 40px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+}
+
+.slider p {
+    margin-bottom: 5%;
+    font-size: 30px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.slider .arrow-left,
+.arrow-right {
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    transform: translateY(-50%);
+    padding: 16px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.arrow-left {
+    left: 2%;
+}
+
+.arrow-right {
+    right: 2%;
+}
+
+.slider button {
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ddd;
+    border: 3px solid;
+    border-radius: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.slider button:hover {
+    color: white;
+}
+
+/* *************************************************** */
+/* bestsellery */
+/* *************************************************** */
+
+.bestsellers {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    height: 680px;
+}
+
+.bestsellers h3 {
+    font-size: 42px;
+    line-height: 120px;
+    text-align: center;
+}
+
+.bestsellers-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;
+    /* height: 100%; */
+}
+
+.bestseller {
+    display: grid;
+    grid-template-rows: 6fr repeat(2, 1fr);
+    border: 1px solid #555;
+    overflow: hidden;
+}
+
+.bestseller .bestseller-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-image: url(./fruits-img/apples-640.jpg);
+    background-size: cover;
+}
+
+.bestseller .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s;
+}
+
+.bestseller .preview {
+    position: absolute;
+    bottom: -69.25px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    background-color: #fff;
+    line-height: 69.25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.bestseller .bestseller-image:hover .preview {
+    bottom: 0;
+}
+
+.bestseller .bestseller-image:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.bestseller-title,
+.bestseller-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    /* text-align: center; */
+}
+
+.bestseller-price {
+    position: relative;
+}
+
+.bestseller-price i {
+    position: absolute;
+    right: 5%;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.bestseller-price i:hover {
+    color: #158E23;
+}
+
+/* *************************************************** */
+/* show all */
+/* *************************************************** */
+
+.show-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.show-all button {
+    padding: 15px 30px;
+    font-size: 42px;
+    border: 3px solid #333;
+    cursor: pointer;
+}
+
+.show-all button:hover {
+    background-color: #fcfcfc;
+    color: #158E23;
+    border-color: #158E23;
+}
+
+.recommended {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 3fr 3fr;
+    height: 800px;
+    gap: 2%;
+}
+
+.recommended h3 {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    line-height: 120px;
+    text-align: center;
+    font-size: 42px;
+}
+
+.recommend {
+    display: grid;
+    grid-template-rows: 60% 20% 20%;
+    position: relative;
+    border: 1px solid #000;
+    background-image: url(./fruits-img/oranges.jpg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+.recommend .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.recommend .overlay button {
+    font-size: 32px;
+    border: 3px solid black;
+    background-color: transparent;
+    padding: 5%;
+    cursor: pointer;
+}
+
+.recommend-title,
+.recommend-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.recommend-price {
+    position: relative;
+}
+
+.recommend-price i {
+    position: absolute;
+    right: 2%;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.recommend-price i:hover {
+    color: #158E23;
+}
+
+.recommend:hover.recommend .overlay,
+.recommend:hover.recommend .recommend-title,
+.recommend:hover.recommend .recommend-price {
+    opacity: 1;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 5fr 1fr;
+    margin-top: 20px;
+    height: 400px;
+}
+
+.ft-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #000;
+}
+
+.ft-item a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.ft-item h3 {
+    font-size: 32px;
+}
+
+.ft-item.logo {
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 56px;
+}
+
+.ft-item.logo a {
+    font-weight: normal;
+}
+
+.ft-item.contact {
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: none;
+}
+
+.ft-item.social {
+    flex-direction: column;
+    justify-content: space-around;
+    line-height: 32px;
+    border-left: none;
+}
+
+.ft-item.social a {
+    font-weight: normal;
+}
+
+.ft-item.social i {
+    font-size: 32px;
+    transform: translateY(3px);
+    padding: 5px;
+}
+
+.fb:hover .fa-facebook {
+    color: #316FF6;
+}
+
+.insta:hover .fa-instagram {
+    color: #C13584;
+}
+
+.pinterest:hover .fa-pinterest {
+    color: #E60023;
+}
+
+.copyright {
+    grid-column: 1/5;
+    grid-row: 2/3;
+    padding: 1%;
+    justify-content: center;
+    border: none;
+}
