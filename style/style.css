@@ -102,6 +102,31 @@ body {
     font-size: 26px;
 }
 
+.nav .cart .collect-counter {
+    display: none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    transform: translateY(-17px);
+    /* padding: 5px 10px; */
+    background-color: #158E23;
+    color: #eff1eb;
+    border-radius: 50%;
+}
+
+.nav .cart .collect-amount {
+    display: none;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.nav .cart .collect-amount.active,
+.nav .cart .collect-counter.active {
+    display: inline;
+}
+
 /* *************************************************** */
 /* slider */
 /* *************************************************** */
