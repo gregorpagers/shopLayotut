@@ -6,7 +6,7 @@ const products = [
         dolores eaque. Eligendi ab officia minus.`,
         category: "ziarnkowe",
         price: 2.00,
-        image: "../fruits-img/apples-640.jpg",
+        image: "./fruits-img/apples-640.jpg",
         bestseller: true
         // saleAmount: 200,
     },
@@ -17,8 +17,8 @@ const products = [
         dolores eaque. Eligendi ab officia minus.`,
         category: "ziarnkowe",
         price: 4.00,
-        image: "../fruits-img/pear-1280.jpg",
-        smallImage: "../fruits-img/pear-640.jpg",
+        image: "./fruits-img/pear-1280.jpg",
+        smallImage: "./fruits-img/pear-640.jpg",
         // sale: true,
         // saleAmount: 200,
     },
@@ -29,8 +29,8 @@ const products = [
         dolores eaque. Eligendi ab officia minus.`,
         category: "jagodowe",
         price: 10.00,
-        image: "../fruits-img/strawberry-1280.jpg",
-        smallImage: "../fruits-img/strawberry-640.jpg",
+        image: "./fruits-img/strawberry-1280.jpg",
+        smallImage: "./fruits-img/strawberry-640.jpg",
         bestseller: true,
         recommend: true
         // saleAmount: 200,
@@ -42,8 +42,8 @@ const products = [
         dolores eaque. Eligendi ab officia minus.`,
         category: "cytrusy",
         price: 4.58,
-        image: "../fruits-img/mandarins-1280.jpg",
-        imageSmall: "../fruits-img/mandarins-640.jpg",
+        image: "./fruits-img/mandarins-1280.jpg",
+        imageSmall: "./fruits-img/mandarins-640.jpg",
         bestseller: true,
         recommend: true
         // saleAmount: 200,
@@ -56,7 +56,7 @@ const products = [
         category: "egzotyczne",
         price: 6.99,
         image: "./fruits-img/banana-1280.jpg",
-        smallImageimage: "../fruits-img/banana-640.jpg",
+        smallImageimage: "./fruits-img/banana-640.jpg",
         bestseller: true,
         recommend: true
         // saleAmount: 200,
@@ -69,7 +69,7 @@ const products = [
         category: "pestkowe",
         price: 10.00,
         image: "./fruits-img/plum-1280.jpg",
-        smallImageimage: "../fruits-img/plum-640.jpg",
+        smallImageimage: "./fruits-img/plum-640.jpg",
         recommend: true
         // saleAmount: 200,
     },
@@ -81,7 +81,7 @@ const products = [
         category: "cytrusy",
         price: 6.50,
         image: "./fruits-img/lemons-1280.jpg",
-        smallImageimage: "../fruits-img/lemons-640.jpg",
+        smallImageimage: "./fruits-img/lemons-640.jpg",
         recommend: true
         // saleAmount: 200,
     },
@@ -92,7 +92,7 @@ const products = [
         dolores eaque. Eligendi ab officia minus.`,
         category: "cytrusy",
         price: 7.50,
-        image: "../fruits-img/oranges.jpg",
+        image: "./fruits-img/oranges.jpg",
         recommend: true
         // saleAmount: 200,
     }

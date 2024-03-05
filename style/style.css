@@ -7,37 +7,26 @@
 body {
     background-color: #f0f5f5;
     font-family: sans-serif;
+    max-width: 1920px;
 }
 
 .wrapper {
+
     display: grid;
-    position: relative;
     margin: 0 auto;
     width: 90%;
     max-width: 1920px;
     background-color: #fff;
-}
-
-.side-nav {
-    background-color: pink;
-    width: 400px;
-    height: 89vh;
-    position: fixed;
-    left: 0;
-    top: 100px;
-    z-index: 100;
-    transform: translateX(-400px);
-}
-
-.side-nav.active {
-    transform: translateX(0);
+    overflow: hidden;
 }
 
 .nav {
     display: grid;
+    position: relative;
     grid-template-columns: repeat(12, 1fr);
     height: 100px;
     margin: auto 0;
+    background-color: #fff;
     /* background-color: aquamarine; */
 }
 
@@ -141,6 +130,22 @@ body {
 .nav .cart .collect-amount.active,
 .nav .cart .collect-counter.active {
     display: inline;
+}
+
+.side-nav {
+    background-color: pink;
+    width: 400px;
+    min-height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    z-index: 100;
+    transform: translateX(-400px);
+    transition: transform 0.3s;
+}
+
+.side-nav.active {
+    transform: translateX(0);
 }
 
 /* *************************************************** */

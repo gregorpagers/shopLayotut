@@ -3,10 +3,16 @@ const mainSpace = document.querySelector('main');
 const collectCounter = document.querySelector('.collect-counter');
 const collectAmount = document.querySelector('.collect-amount');
 const nav = document.querySelector('nav');
-
+const menuBtn = document.querySelector('.burger');
+const sideNav = document.querySelector('.side-nav');
 const collectCounterTab = [];
 let colletCounterTabLength = 0;
 let amount = 0;
+let categories = new Set(); //set nie możę mieć powtórzonych wartości
+const navAllProductsBtn = document.querySelector('.nav-all-products');
+const navCategoriesDiv = document.querySelector('.nav-categories-div');
+
+
 const cartFunctions = () => {
 
     const addToCollectCounter = (quantity) => {
@@ -181,6 +187,8 @@ const renderMainPage = (products) => {
 
     cartFunctions();
     loadProduct();
+    generateCategoriesInMenu();
+    const allCategoriesButtons = document.querySelectorAll('.nav-category-button')
 
     const showAllProductsBtn = document.querySelector(".showAllProducts");
     showAllProductsBtn.addEventListener("click", () => {
@@ -190,5 +198,25 @@ const renderMainPage = (products) => {
     })
 }
 
+const generateCategoriesInMenu = () => {
+    currentProducts.forEach(product => {
+        categories.add(product.category);  //add - metoda Set
+    });
+
+    categories.forEach(category => {
+        const navCategory = document.createElement('button');
+        navCategory.classList.add = "nav-category-button";
+        navCategory.innerHTML = category.toString();
+        navCategoriesDiv.appendChild(navCategory);
+    }
+    );
+}
+
+
+const showMenu = () => {
+    sideNav.classList.toggle("active");
+}
+
+menuBtn.addEventListener('click', showMenu);
 // document.onload = renderProducts(currentProducts);
 document.onload = renderMainPage(currentProducts);
