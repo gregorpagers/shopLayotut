@@ -12,6 +12,50 @@ let categories = new Set(); //set nie możę mieć powtórzonych wartości
 const navAllProductsBtn = document.querySelector('.nav-all-products');
 const navCategoriesDiv = document.querySelector('.nav-categories-div');
 
+const generateCategoriesInMenu = () => {
+    currentProducts.forEach(product => {
+        categories.add(product.category);  //add - metoda Set
+    });
+
+    categories.forEach(category => {
+        const navCategory = document.createElement('button');
+        navCategory.classList = "nav-category-button";
+        navCategory.innerHTML = category.toString();
+        navCategoriesDiv.appendChild(navCategory);
+    }
+    );
+
+    const allCategoriesButtons = document.querySelectorAll('.nav-category-button');
+
+    allCategoriesButtons.forEach(categoryButton => {
+        categoryButton.addEventListener('click', () => {
+            showProdctsByCategory(this.document.activeElement.innerHTML);
+        })
+    })
+}
+
+
+
+const showProdctsByCategory = (categoryName) => {
+    const productsByCategoryNameTab = [];
+    currentProducts.forEach((product) => {
+        if (categoryName.toString() === product.category.toString()) {
+            productsByCategoryNameTab.push({
+                id: product.id,
+                name: `${product.name}`,
+                description: `${product.description}`,
+                category: `${product.category}`,
+                price: product.price,
+                image: `${product.image}`
+            }) //push end
+        }
+    });//foreach
+    console.log(productsByCategoryNameTab);
+    renderProducts(productsByCategoryNameTab);
+}
+
+// loadProduct().showProduct();
+
 
 const cartFunctions = () => {
 
@@ -52,6 +96,9 @@ const cartFunctions = () => {
     });
 
 }
+
+
+
 const loadProduct = () => {
 
     const sliderElement = document.querySelector('header');
@@ -188,7 +235,6 @@ const renderMainPage = (products) => {
     cartFunctions();
     loadProduct();
     generateCategoriesInMenu();
-    const allCategoriesButtons = document.querySelectorAll('.nav-category-button')
 
     const showAllProductsBtn = document.querySelector(".showAllProducts");
     showAllProductsBtn.addEventListener("click", () => {
@@ -197,21 +243,6 @@ const renderMainPage = (products) => {
         renderProducts(currentProducts);
     })
 }
-
-const generateCategoriesInMenu = () => {
-    currentProducts.forEach(product => {
-        categories.add(product.category);  //add - metoda Set
-    });
-
-    categories.forEach(category => {
-        const navCategory = document.createElement('button');
-        navCategory.classList.add = "nav-category-button";
-        navCategory.innerHTML = category.toString();
-        navCategoriesDiv.appendChild(navCategory);
-    }
-    );
-}
-
 
 const showMenu = () => {
     sideNav.classList.toggle("active");
