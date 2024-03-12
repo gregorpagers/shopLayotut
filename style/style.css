@@ -8,6 +8,7 @@ body {
     background-color: #f0f5f5;
     font-family: sans-serif;
     max-width: 1920px;
+    margin: 0 auto;
 }
 
 .wrapper {
@@ -15,7 +16,6 @@ body {
     display: grid;
     margin: 0 auto;
     width: 90%;
-    max-width: 1920px;
     background-color: #fff;
     overflow: hidden;
 }
@@ -40,6 +40,10 @@ body {
 
 .nav .burger i {
     padding-right: 20px;
+    cursor: pointer;
+}
+
+.nav .burger span {
     cursor: pointer;
 }
 
@@ -133,7 +137,7 @@ body {
 }
 
 .side-nav {
-    background-color: pink;
+    background-color: #fff;
     width: 400px;
     min-height: 100vh;
     position: absolute;
@@ -147,6 +151,40 @@ body {
 .side-nav.active {
     transform: translateX(0);
 }
+
+.side-nav button {
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.side-nav button:hover {
+    background-color: #eee;
+}
+
+.side-nav .nav-all-div {
+    padding: 20px 0;
+    border-top: 1px solid #111;
+}
+
+
+.side-nav .nav-categories-div {
+    padding: 20px 0;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.side-nav .nav-categories-div button {
+    margin-bottom: 10px;
+}
+
 
 /* *************************************************** */
 /* slider */

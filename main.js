@@ -30,11 +30,10 @@ const generateCategoriesInMenu = () => {
     allCategoriesButtons.forEach(categoryButton => {
         categoryButton.addEventListener('click', () => {
             showProdctsByCategory(this.document.activeElement.innerHTML);
+            showMenu();
         })
     })
 }
-
-
 
 const showProdctsByCategory = (categoryName) => {
     const productsByCategoryNameTab = [];
@@ -50,12 +49,8 @@ const showProdctsByCategory = (categoryName) => {
             }) //push end
         }
     });//foreach
-    console.log(productsByCategoryNameTab);
-    renderProducts(productsByCategoryNameTab);
+    renderProducts(productsByCategoryNameTab, categoryName);
 }
-
-// loadProduct().showProduct();
-
 
 const cartFunctions = () => {
 
@@ -96,8 +91,6 @@ const cartFunctions = () => {
     });
 
 }
-
-
 
 const loadProduct = () => {
 
@@ -143,10 +136,13 @@ const loadProduct = () => {
     });
 }
 
-const renderProducts = (products) => {
+const renderProducts = (products, buttonCategoryName) => {
+    console.log(buttonCategoryName);
     mainSpace.innerHTML = `
     <div class="products">
-        <h3>Wszystkie produkty</h3>
+        <h3>${buttonCategoryName === undefined ?
+            'Wszystkie produkty' :
+            buttonCategoryName}</h3>
         <div class="products-wrapper">
 
         </div>
@@ -249,5 +245,10 @@ const showMenu = () => {
 }
 
 menuBtn.addEventListener('click', showMenu);
+navAllProductsBtn.addEventListener('click', (e) => {
+    console.log(e.target.textContent);
+    renderProducts(currentProducts, e.target.textContent);
+    showMenu();
+})
 // document.onload = renderProducts(currentProducts);
 document.onload = renderMainPage(currentProducts);
