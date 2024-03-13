@@ -9,10 +9,14 @@ const collectCounterTab = [];
 let colletCounterTabLength = 0;
 let amount = 0;
 let categories = new Set(); //set nie możę mieć powtórzonych wartości
+const navMainPageBtn = document.querySelector('.nav-main-page-button');
 const navAllProductsBtn = document.querySelector('.nav-all-products');
 const navCategoriesDiv = document.querySelector('.nav-categories-div');
 
 const generateCategoriesInMenu = () => {
+
+    navCategoriesDiv.innerHTML = "";
+
     currentProducts.forEach(product => {
         categories.add(product.category);  //add - metoda Set
     });
@@ -29,10 +33,10 @@ const generateCategoriesInMenu = () => {
 
     allCategoriesButtons.forEach(categoryButton => {
         categoryButton.addEventListener('click', () => {
-            showProdctsByCategory(this.document.activeElement.innerHTML);
             showMenu();
-        })
-    })
+            showProdctsByCategory(this.document.activeElement.innerHTML);
+        });
+    });
 }
 
 const showProdctsByCategory = (categoryName) => {
@@ -104,7 +108,6 @@ const loadProduct = () => {
         currentProducts.forEach(product => {
             if (e.target.dataset.id === product.id.toString()) {
                 mainSpace.innerHTML = `
-                <button class="allProducts"> < Wszystkie produkty </button>
                 <div class="product-wrapper">
                     <div class="product-photo">
                         <div class="photo"><img src="${product.image}" alt="${product.name}"></div>
@@ -125,10 +128,7 @@ const loadProduct = () => {
                 `
             }
         })
-        const backToAllBtn = document.querySelector(".allProducts");
-        backToAllBtn.addEventListener("click", () => {
-            renderProducts(currentProducts);
-        });
+
     }
 
     previewBtns.forEach((previewBtn) => {
@@ -138,6 +138,8 @@ const loadProduct = () => {
 
 const renderProducts = (products, buttonCategoryName) => {
     console.log(buttonCategoryName);
+    const sliderWraper = document.querySelector('.slider');
+    if (sliderWraper) { sliderWraper.remove(); };
     mainSpace.innerHTML = `
     <div class="products">
         <h3>${buttonCategoryName === undefined ?
@@ -168,9 +170,13 @@ const renderProducts = (products, buttonCategoryName) => {
 
 const renderMainPage = (products) => {
 
-    const slider = document.createElement('header');
-    slider.classList = "slider";
-    slider.innerHTML = `
+    const sliderWraper = document.querySelector('.slider');
+
+    if (sliderWraper) { console.log(sliderWraper); }
+    else {
+        const slider = document.createElement('header');
+        slider.classList = "slider";
+        slider.innerHTML = `
         <div class="description-wrapper">
             <h2>Świeżość jakiej oczekujesz</h2>
             <p>Opis najlepszego produktu w najlepszej możliwej cenie do uzgodnienia</p>
@@ -179,7 +185,8 @@ const renderMainPage = (products) => {
         <div class="arrow-left"><i class="fa-solid fa-chevron-left"></i></div>
         <div class="arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
     `
-    nav.after(slider);
+        nav.after(slider);
+    }
 
     mainSpace.innerHTML = `
         <div class="bestsellers">
@@ -245,6 +252,10 @@ const showMenu = () => {
 }
 
 menuBtn.addEventListener('click', showMenu);
+navMainPageBtn.addEventListener('click', () => {
+    showMenu();
+    renderMainPage(currentProducts);
+});
 navAllProductsBtn.addEventListener('click', (e) => {
     console.log(e.target.textContent);
     renderProducts(currentProducts, e.target.textContent);
