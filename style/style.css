@@ -382,6 +382,10 @@ body {
     border-color: #158E23;
 }
 
+/* *************************************************** */
+/* recommended */
+/* *************************************************** */
+
 .recommended {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -544,4 +548,10 @@ footer {
     padding: 1%;
     justify-content: center;
     border: none;
+}
+
+.alert-text {
+    margin-top: 20px;
+    color: #f1586f;
+    font-size: 20px;
 }

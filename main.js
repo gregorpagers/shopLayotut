@@ -6,7 +6,7 @@ const nav = document.querySelector('nav');
 const menuBtn = document.querySelector('.burger');
 const sideNav = document.querySelector('.side-nav');
 const collectCounterTab = [];
-let colletCounterTabLength = 0;
+let collectCounterTabLength = 0;
 let amount = 0;
 let categories = new Set(); //set nie możę mieć powtórzonych wartości
 const navMainPageBtn = document.querySelector('.nav-main-page-button');
@@ -56,7 +56,7 @@ const showProdctsByCategory = (categoryName) => {
     renderProducts(productsByCategoryNameTab, categoryName);
 }
 
-const cartFunctions = () => {
+const cartFunctions = (addToCartBtn, collectVolume) => {
 
     const addToCollectCounter = (quantity) => {
         collectCounter.classList.add("active");
@@ -78,10 +78,14 @@ const cartFunctions = () => {
     }
 
     const addToCartMiniBtns = document.querySelectorAll('.fa-cart-plus');
-    const addToCartMini = (e) => {
-        const productId = e.target.dataset.id;
+    const addToCartMini = (btn, collectVolume) => {
+        const productId = btn.dataset.id;
         products.forEach(product => {
-            if (productId === product.id.toString()) {
+            if (productId === product.id.toString() && collectVolume) {
+                collectCounterTab.push(product.price * collectVolume);
+                collectCounterTabLength = collectCounterTab.length;
+            }
+            else if (productId === product.id.toString()) {
                 collectCounterTab.push(product.price);
                 collectCounterTabLength = collectCounterTab.length;
             }
@@ -91,8 +95,15 @@ const cartFunctions = () => {
     }
 
     addToCartMiniBtns.forEach((addToCartMiniBtn) => {
-        addToCartMiniBtn.addEventListener('click', addToCartMini);
+        addToCartMiniBtn.addEventListener('click', function (e) {
+            addToCartMini(e.target);
+        }
+
+        );
     });
+
+    if (addToCartBtn)
+        addToCartMini(addToCartBtn, collectVolume);
 
 }
 
@@ -119,7 +130,8 @@ const loadProduct = () => {
                             <div class="label"><label for="volume">Ilość (kg):</label></div>
                             <input type="number" id="volume" name="volume" min="1" value="1">
                         </div>
-                        <button data-id="${product.id}">Dodaj do koszyka</button>
+                        <button class="add-to-cart-in-collect-button" data-id="${product.id}">Dodaj do koszyka</button>
+                        <p class="alert-text"></p>
                     </div>
                     <div class="product-description">
                         ${product.description}
@@ -128,7 +140,21 @@ const loadProduct = () => {
                 `
             }
         })
+        const collectVolume = document.querySelector('#volume');
+        // collectVolume.addEventListener('click', () => { console.log(collectVolume.value); })
 
+        const addToCartBtn = document.querySelector('.add-to-cart-in-collect-button');
+        addToCartBtn.addEventListener('click', () => {
+
+            const alertText = document.querySelector('.alert-text');
+
+            if (collectVolume.value > 0) {
+                alertText.innerHTML = "";
+                cartFunctions(addToCartBtn, collectVolume.value);
+            } else {
+                alertText.innerText = "Zamówiony towar musi mieć co najmniej 1 kg.";
+            }
+        })
     }
 
     previewBtns.forEach((previewBtn) => {
@@ -172,7 +198,7 @@ const renderMainPage = (products) => {
 
     const sliderWraper = document.querySelector('.slider');
 
-    if (sliderWraper) { console.log(sliderWraper); }
+    if (sliderWraper) { }
     else {
         const slider = document.createElement('header');
         slider.classList = "slider";

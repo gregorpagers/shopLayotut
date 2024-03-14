@@ -61,8 +61,8 @@ main {
     padding-bottom: 20px;
 }
 
-.product-price {
-    color: #158E23;
+.product-collect .product-price {
+    font-size: 26px;
 }
 
 .product-volume .label {
