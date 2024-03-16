@@ -12,6 +12,27 @@ let categories = new Set(); //set nie możę mieć powtórzonych wartości
 const navMainPageBtn = document.querySelector('.nav-main-page-button');
 const navAllProductsBtn = document.querySelector('.nav-all-products');
 const navCategoriesDiv = document.querySelector('.nav-categories-div');
+const searchInput = document.querySelector('input.search-input');
+const searchInputText = "";
+const searchBtn = document.querySelector('.fa-magnifying-glass');
+
+const search = (text) => {
+    // console.log(text);
+    // showProdctsByCategory(text);
+    const foundProducts = currentProducts.filter(product => {
+        if (product.name.toLowerCase().includes(text.toLowerCase())
+            || product.category.toLowerCase().includes(text.toLowerCase())
+            || product.description.toLowerCase().includes(text.toLowerCase())) {
+            return product;
+        }
+    });
+    const messageNotFound = 'Nie znaleziono produktu ' + text;
+    foundProducts.length === 0 ?
+        renderProducts(foundProducts, messageNotFound) :
+        renderProducts(foundProducts, text);
+
+}
+
 
 const generateCategoriesInMenu = () => {
 
@@ -42,7 +63,7 @@ const generateCategoriesInMenu = () => {
 const showProdctsByCategory = (categoryName) => {
     const productsByCategoryNameTab = [];
     currentProducts.forEach((product) => {
-        if (categoryName.toString() === product.category.toString()) {
+        if (categoryName.toString() === product.category.toString() || categoryName.toString() === product.name.toString()) {
             productsByCategoryNameTab.push({
                 id: product.id,
                 name: `${product.name}`,
@@ -54,6 +75,10 @@ const showProdctsByCategory = (categoryName) => {
         }
     });//foreach
     renderProducts(productsByCategoryNameTab, categoryName);
+}
+
+const showProdctsBySearch = (searchTezt) => {
+    //
 }
 
 const cartFunctions = (addToCartBtn, collectVolume) => {
@@ -90,7 +115,7 @@ const cartFunctions = (addToCartBtn, collectVolume) => {
                 collectCounterTabLength = collectCounterTab.length;
             }
         });
-        addToCollectCounter(collectCounterTabLength);
+        addToCollectCounter(collectCounterTabLength, collectVolume);
         countOrderAmount(collectCounterTab);
     }
 
@@ -163,9 +188,10 @@ const loadProduct = () => {
 }
 
 const renderProducts = (products, buttonCategoryName) => {
-    console.log(buttonCategoryName);
+    // console.log(buttonCategoryName);
     const sliderWraper = document.querySelector('.slider');
     if (sliderWraper) { sliderWraper.remove(); };
+
     mainSpace.innerHTML = `
     <div class="products">
         <h3>${buttonCategoryName === undefined ?
@@ -287,5 +313,19 @@ navAllProductsBtn.addEventListener('click', (e) => {
     renderProducts(currentProducts, e.target.textContent);
     showMenu();
 })
+
+searchBtn.addEventListener('click', function () {
+    // searchInput.addEventListener('change', function () {
+    //     searchInputText = searchInput.velue;
+    // })
+    search(searchInput.value);
+})
+
+searchInput.addEventListener('keyup', function (e) {
+    e.keyCode === 13 ?
+        search(searchInput.value) :
+        "";
+})
+
 // document.onload = renderProducts(currentProducts);
 document.onload = renderMainPage(currentProducts);
