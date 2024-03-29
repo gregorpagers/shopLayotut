@@ -4,8 +4,9 @@ const collectCounter = document.querySelector('.collect-counter');
 const collectAmount = document.querySelector('.collect-amount');
 const nav = document.querySelector('nav');
 const menuBtn = document.querySelector('.burger');
+const navSticky = document.querySelector('.nav-sticky');
 const sideNav = document.querySelector('.side-nav');
-const collectCounterTab = [];
+let collectCounterTab = [];
 let collectCounterTabLength = 0;
 let amount = 0;
 let categories = new Set(); //set nie możę mieć powtórzonych wartości
@@ -15,6 +16,8 @@ const navCategoriesDiv = document.querySelector('.nav-categories-div');
 const searchInput = document.querySelector('input.search-input');
 const searchInputText = "";
 const searchBtn = document.querySelector('.fa-magnifying-glass');
+const cartTimes = document.querySelector('.collect-times');
+const sliderPlace = document.querySelector('.slider-place');
 
 const search = (text) => {
     // console.log(text);
@@ -32,7 +35,6 @@ const search = (text) => {
         renderProducts(foundProducts, text);
 
 }
-
 
 const generateCategoriesInMenu = () => {
 
@@ -77,23 +79,16 @@ const showProdctsByCategory = (categoryName) => {
     renderProducts(productsByCategoryNameTab, categoryName);
 }
 
-const showProdctsBySearch = (searchTezt) => {
-    //
-}
-
 const cartFunctions = (addToCartBtn, collectVolume) => {
 
     const addToCollectCounter = (quantity) => {
+        cartTimes.classList.add("active");
         collectCounter.classList.add("active");
         collectCounter.textContent = quantity;
     }
 
     const countOrderAmount = (collectTab) => {
         let amount = 0;
-        // collectTab.forEach(productPrice => {
-        //     productPrice += productPrice;
-        // })
-
         for (let i = 0; i < collectTab.length; i++) {
             amount = amount + collectTab[i];
         }
@@ -103,6 +98,7 @@ const cartFunctions = (addToCartBtn, collectVolume) => {
     }
 
     const addToCartMiniBtns = document.querySelectorAll('.fa-cart-plus');
+
     const addToCartMini = (btn, collectVolume) => {
         const productId = btn.dataset.id;
         products.forEach(product => {
@@ -115,7 +111,7 @@ const cartFunctions = (addToCartBtn, collectVolume) => {
                 collectCounterTabLength = collectCounterTab.length;
             }
         });
-        addToCollectCounter(collectCounterTabLength, collectVolume);
+        addToCollectCounter(collectCounterTabLength);
         countOrderAmount(collectCounterTab);
     }
 
@@ -132,14 +128,13 @@ const cartFunctions = (addToCartBtn, collectVolume) => {
 
 }
 
-const loadProduct = () => {
+const loadProduct = (productId) => {
 
-    const sliderElement = document.querySelector('header');
     const previewBtns = document.querySelectorAll('.preview');
 
     const showProduct = (e) => {
-        if (sliderElement)
-            sliderElement.remove();
+
+        removeSlider();
 
         currentProducts.forEach(product => {
             if (e.target.dataset.id === product.id.toString()) {
@@ -182,15 +177,22 @@ const loadProduct = () => {
         })
     }
 
+    if (productId) {
+        showProduct(productId);
+    }
+
     previewBtns.forEach((previewBtn) => {
         previewBtn.addEventListener('click', showProduct);
     });
 }
 
+const removeSlider = () => {
+    if (sliderPlace) { sliderPlace.innerHTML = ""; };
+}
+
 const renderProducts = (products, buttonCategoryName) => {
     // console.log(buttonCategoryName);
-    const sliderWraper = document.querySelector('.slider');
-    if (sliderWraper) { sliderWraper.remove(); };
+    removeSlider();
 
     mainSpace.innerHTML = `
     <div class="products">
@@ -221,23 +223,12 @@ const renderProducts = (products, buttonCategoryName) => {
 }
 
 const renderMainPage = (products) => {
+    const sliderBox = document.querySelector('.slider-box');
 
-    const sliderWraper = document.querySelector('.slider');
-
-    if (sliderWraper) { }
+    if (sliderBox) {
+    }
     else {
-        const slider = document.createElement('header');
-        slider.classList = "slider";
-        slider.innerHTML = `
-        <div class="description-wrapper">
-            <h2>Świeżość jakiej oczekujesz</h2>
-            <p>Opis najlepszego produktu w najlepszej możliwej cenie do uzgodnienia</p>
-            <button>Sprawdź</button>
-        </div>
-        <div class="arrow-left"><i class="fa-solid fa-chevron-left"></i></div>
-        <div class="arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
-    `
-        nav.after(slider);
+        startSlider();
     }
 
     mainSpace.innerHTML = `
@@ -293,13 +284,15 @@ const renderMainPage = (products) => {
 
     const showAllProductsBtn = document.querySelector(".showAllProducts");
     showAllProductsBtn.addEventListener("click", () => {
-        const sliderElement = document.querySelector('header');
-        sliderElement.remove();
+        removeSlider();
         renderProducts(currentProducts);
     })
+
+
 }
 
 const showMenu = () => {
+    navSticky.classList.toggle("active");
     sideNav.classList.toggle("active");
 }
 
@@ -315,16 +308,19 @@ navAllProductsBtn.addEventListener('click', (e) => {
 })
 
 searchBtn.addEventListener('click', function () {
-    // searchInput.addEventListener('change', function () {
-    //     searchInputText = searchInput.velue;
-    // })
     search(searchInput.value);
 })
 
 searchInput.addEventListener('keyup', function (e) {
-    e.keyCode === 13 ?
-        search(searchInput.value) :
-        "";
+    if (e.keyCode === 13)
+        search(searchInput.value);
+})
+
+cartTimes.addEventListener('click', () => {
+    cartTimes.classList.remove('active');
+    collectAmount.classList.remove('active');
+    collectCounter.classList.remove('active');
+    collectCounterTab = [];
 })
 
 // document.onload = renderProducts(currentProducts);

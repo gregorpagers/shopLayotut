@@ -12,27 +12,29 @@ body {
 }
 
 .wrapper {
-
-    display: grid;
+    /* display: grid; */
     margin: 0 auto;
     width: 90%;
     background-color: #fff;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
-
-nav-sticky {
+.nav-sticky {
     position: sticky;
     top: 0;
+    left: 5%;
+    width: 100%;
     z-index: 100;
+    transition-delay: 0.3s;
 }
+
+.nav-sticky.active {}
 
 .nav {
     display: grid;
-    /* position: relative; */
     grid-template-columns: repeat(12, 1fr);
     height: 100px;
-    margin: auto 0;
+    /* margin: auto 0; */
     background-color: #fff;
     /* background-color: aquamarine; */
 }
@@ -138,25 +140,38 @@ nav-sticky {
     padding-left: 10px;
 }
 
+.nav .cart .collect-times {
+    display: none;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.nav .cart .collect-times:hover {
+    color: #E60023;
+}
+
 .nav .cart .collect-amount.active,
-.nav .cart .collect-counter.active {
+.nav .cart .collect-counter.active,
+.nav .cart .collect-times.active {
     display: inline;
 }
 
-.side-nav {
-    background-color: #fff;
-    width: 400px;
-    min-height: 100vh;
+aside.side-nav {
     position: absolute;
     left: 0;
     top: 100px;
+    width: 400px;
+    min-height: 100vh;
+    background-color: #fff;
     z-index: 100;
     transform: translateX(-400px);
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
 }
 
 .side-nav.active {
     transform: translateX(0);
+    opacity: 1;
 }
 
 .side-nav button {
@@ -202,12 +217,35 @@ nav-sticky {
 /* slider */
 /* *************************************************** */
 
+.slider-place {
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-box {
+    background-color: #444;
+    height: 600px;
+    display: flex;
+    width: 300%;
+    transform: translateX(0);
+    transition: transform 0.5s;
+}
+
 .slider {
     position: relative;
-    margin-top: 100px;
-    height: 560px;
-    background-image: url(../fruits-img/strawberry.jpg);
-    background-size: cover;
+    width: 100%;
+    height: 600px;
+}
+
+/* background-image: url(../fruits-img/strawberry.jpg); */
+/* background-size: cover; */
+
+
+.slider img {
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+
 }
 
 .slider .description-wrapper {
@@ -236,7 +274,7 @@ nav-sticky {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-.slider .arrow-left,
+.arrow-left,
 .arrow-right {
     position: absolute;
     top: 50%;
@@ -272,14 +310,15 @@ nav-sticky {
     color: white;
 }
 
+
 /* *************************************************** */
 /* bestsellery */
 /* *************************************************** */
 
 .bestsellers {
-    display: grid;
-    grid-template-rows: 1fr 5fr;
-    height: 680px;
+    /* display: grid;
+    grid-template-rows: 1fr 5fr; */
+    min-height: 680px;
 }
 
 .bestsellers h3 {
@@ -290,14 +329,15 @@ nav-sticky {
 
 .bestsellers-wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2%;
-    /* height: 100%; */
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 402px);
+    gap: 16px;
 }
 
 .bestseller {
     display: grid;
     grid-template-rows: 6fr repeat(2, 1fr);
+    min-height: 590px;
     border: 1px solid #555;
     overflow: hidden;
 }
@@ -562,4 +602,18 @@ footer {
     margin-top: 20px;
     color: #f1586f;
     font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+    .nav .search {
+        width: 30px;
+    }
+
+    .nav .search .search-input {
+        width: 3vw;
+    }
+
+    .slider-box {
+        height: 4 0vw;
+    }
 }
