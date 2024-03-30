@@ -243,6 +243,8 @@ const renderMainPage = (products) => {
         </div>
         <div class="recommended">
             <h3>Polecane dla Ciebie</h3>
+            <div class="recommended-wrapper">
+            </div>
         </div>
     `
 
@@ -263,7 +265,7 @@ const renderMainPage = (products) => {
         }
     });
 
-    const recommendedWrapper = document.querySelector('.recommended');
+    const recommendedWrapper = document.querySelector('.recommended-wrapper');
     products.forEach(product => {
         if (product.recommend === true) {
             const recommendDiv = document.createElement("div");

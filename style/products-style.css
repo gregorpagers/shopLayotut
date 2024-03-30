@@ -10,6 +10,7 @@
     grid-template-columns: repeat(auto-fit, 402px);
     gap: 16px;
     /* height: 100%; */
+    margin-bottom: 15px;
 }
 
 .product {
@@ -82,4 +83,12 @@
 
 .product-price i:hover {
     color: #158E23;
+}
+
+
+@media (max-width: 576px) {
+
+    .products-wrapper {
+        grid-template-columns: repeat(auto-fit, 90%);
+    }
 }
