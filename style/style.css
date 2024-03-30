@@ -328,7 +328,7 @@ aside.side-nav {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, 402px);
+    grid-template-columns: repeat(auto-fit, 377px);
     gap: 16px;
 }
 
@@ -639,7 +639,16 @@ footer {
 }
 
 
-@media (max-width: 1024px) {}
+@media (max-width: 1024px) {
+
+    .recommend .overlay,
+    .recommend .recommend-title,
+    .recommend .recommend-price {
+        opacity: 1;
+        z-index: 1;
+    }
+
+}
 
 @media (max-width: 992px) {
 
