@@ -449,7 +449,7 @@ aside.side-nav {
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, 402px);
+    grid-template-columns: repeat(auto-fit, 440px);
 
     /* grid-template-rows: 3fr 3fr; */
     /* height: 100%; */
