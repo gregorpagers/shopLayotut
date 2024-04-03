@@ -94,7 +94,7 @@ const cartFunctions = (addToCartBtn, collectVolume) => {
         }
 
         collectAmount.classList.add("active");
-        collectAmount.textContent = amount + " zł";
+        collectAmount.textContent = amount.toFixed(2) + " zł";
     }
 
     const addToCartMiniBtns = document.querySelectorAll('.fa-cart-plus');
